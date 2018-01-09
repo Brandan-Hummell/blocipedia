@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  resources :wikis
 
   devise_for :users, controllers: { sessions: 'users/sessions' }
   root to: "home#index"
