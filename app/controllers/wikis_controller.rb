@@ -35,12 +35,12 @@ class WikisController < ApplicationController
     def update
       @wiki = Wiki.find(params[:id])
       @wiki.assign_attributes(wiki_params)
-  
+      authorize @wiki
       if @wiki.save
-        flash[:notice] = "Post was updated."
+        flash[:notice] = "Wiki was updated."
         redirect_to [@wiki]
       else
-        flash.now[:alert] = "There was an error saving the post. Please try again."
+        flash.now[:alert] = "There was an error saving the wiki. Please try again."
         render :edit
       end
     end

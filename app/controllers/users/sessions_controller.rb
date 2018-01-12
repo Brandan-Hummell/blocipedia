@@ -15,7 +15,6 @@ class Users::SessionsController < Devise::SessionsController
 
  # DELETE /users/sign_out
   def destroy
-    puts 'function call'
     super
   end
 
@@ -23,6 +22,6 @@ class Users::SessionsController < Devise::SessionsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:username, :role])
   end
 end
