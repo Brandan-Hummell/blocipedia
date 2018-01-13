@@ -37,6 +37,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'coffee-script-source', '1.8.0'
 gem 'pundit'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
