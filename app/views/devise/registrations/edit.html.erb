@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edit Your User Profile</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -36,8 +36,17 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<% if current_user.role == 'premium' %>
+  <div>
+    <h3>Downgrade to standard acccount</h3>
+    <p>Note: You will not receive a refund for the initial upgrade costs.</p>
+    <p><%= button_to "Downgrade my account", downgrade_charges_path, data: { confirm: "Are you sure?" }, method: :put %></p>
+  </div>
+<% end %>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<div>
+  <h3>Cancel my account</h3>
+  <p>Deleting your account is permanent! <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+</div>
 
 <%= link_to "Back", :back %>

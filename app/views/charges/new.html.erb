@@ -1,0 +1,18 @@
+ <% if current_user && current_user.role == 'standard'%>
+  <div>
+    <h3>Upgrade my account</h3>
+        <h4>Benefits</h4>
+        <ul>
+            <li>You can make private wikis which can only be edited and accessed by people of your choosing.</li>
+            <li>You will support our site!</li>
+        </ul>
+        <%= form_tag charges_path do %>
+          <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+        <% end %>
+  </div>
+<% end %>
+
+<% if current_user && (current_user.role == 'admin' || current_user.role == 'premium') %>
+  <h3>You're account is already upgraded.</h3>
+  <p>Thanks for your continued support!</p>
+<% end %>
