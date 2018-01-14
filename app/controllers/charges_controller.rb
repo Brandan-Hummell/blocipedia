@@ -38,7 +38,11 @@ class ChargesController < ApplicationController
     end
 
     def downgrade
+
+        Wiki.where(:user_id => current_user.id).where(:private => true).update_all(private: false)
+
         User.update(current_user.id, role: 'standard')
+
         redirect_to edit_user_registration_path(current_user)
     end
 end
