@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :wikis
+  has_many :collaborators
 
   after_initialize { self.role ||= :standard }
 
